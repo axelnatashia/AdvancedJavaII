@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package tutorial.pkg2;
-
+import java.util.*;
 /**
  *
  * @author axel
@@ -14,16 +14,18 @@ public class Room
     String name="";
     int noOfChair=0;
     boolean isBooked;
-    Dimension inDimension;
-    Window inWindow;
+    ArrayList<Dimension> InDimension = new ArrayList<Dimension>();
+    ArrayList<Window> InWindow = new ArrayList<Window>();
+    /*Dimension inDimension;
+    Window inWindow;*/
     
     public Room(String inName, int inNoOfChair, boolean inBooked, Dimension inDim, Window inWin)
     {
         this.name=inName;
         this.noOfChair=inNoOfChair;
         this.isBooked=inBooked;
-        this.inDimension=inDim;
-        this.inWindow=inWin;
+        this.InDimension.add(inDim);
+        this.InWindow.add(inWin);
     }
     
     public void setName(String inName)
@@ -40,6 +42,15 @@ public class Room
     {
         this.isBooked = inBooked;
     }
+    public void setInDimension(ArrayList<Dimension> inDim)
+    {
+        this.InDimension=inDim;
+    }
+    public void setInWindow(ArrayList<Window> inWin)
+    {
+        this.InWindow=inWin;
+    }
+    
     public String getName()
     {
         return this.name;
@@ -55,8 +66,18 @@ public class Room
         return this.isBooked;
     }
     
+    public ArrayList<Dimension> getInDimension()
+    {
+        return this.InDimension;
+    }
+    
+    public ArrayList<Window> getInWindow()
+    {
+        return this.InWindow;
+    }
+    
     public String toString()
     {
-       return "Room "+this.name+"\n With "+inDimension.toString()+"m, with "+inWindow.toString()+" \n and "+this.noOfChair+" chairs, and is already booked: "+this.isBooked;
+       return "Room "+getName()+"\n With "+getInDimension()+"m, with "+getInWindow()+" \n and "+getNoOfChair()+" chairs, and is already booked: "+getIsBooked();
     }
 }
